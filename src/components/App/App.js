@@ -14,23 +14,28 @@ class App extends Component {
     }
 
     componentDidMount() {
+        this.updateShips();
+    }
+
+    getShipsData = async () => {
+        const response = await db.collection('ships').get();
+        const ships = [];
+        await response.forEach(doc => (
+            ships.push(doc.data())
+        ));
+
+        return ships;
+    }
+
+    updateShips() {
         this.setState({
             shipsLoading: true,
         });
-        db.collection('ships').get()
-            .then((snapshot) => {
-                const docs = [];
-                snapshot.forEach(doc => (
-                    docs.push(doc.data())
-                ));
-                this.setState({
-                    ships: prepareShipsData(docs),
-                    shipsLoading: false,
-                });
-            })
-            .catch((err) => {
-                console.error('Error getting ships', err);
-            });
+        this.getShipsData()
+            .then(ships => this.setState({
+                ships: prepareShipsData(ships),
+                shipsLoading: false,
+            }));
     }
 
     render() {
@@ -39,6 +44,12 @@ class App extends Component {
         return (
             <div className="App">
                 <h1>SeaportKit</h1>
+                <button
+                    type="button"
+                    onClick={() => this.updateShips()}
+                >
+                    Refresh
+                </button>
                 <ShipsList
                     loading={shipsLoading}
                     ships={ships}
