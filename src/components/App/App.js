@@ -1,21 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
+import { Router } from '@reach/router';
+import Header from '../Header/Header';
+import Ships from '../Ships/Ships';
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    componentDidMount() {}
-
-    render() {
-        return (
-            <div className="App">
-                <h1>SeaportKit</h1>
-            </div>
-        );
-    }
-}
+const App = () => (
+    <div className="App">
+        <Header />
+        <Router>
+            <Ships path="/" />
+        </Router>
+    </div>
+);
 
 export default App;
