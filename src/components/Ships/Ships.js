@@ -51,6 +51,7 @@ class Ships extends Component {
                 <p>{loadingShips ? 'Loading...' : ''}</p>
                 <ReactTableFixedColumns
                     data={ships}
+                    className="-striped -highlight"
                     columns={[
                         {
                             Header: 'SHIP',
@@ -65,6 +66,12 @@ class Ships extends Component {
                                     accessor: 'name',
                                 },
                             ],
+                        },
+                    ]}
+                    defaultSorted={[
+                        {
+                            id: 'level',
+                            desc: false,
                         },
                     ]}
                 />
