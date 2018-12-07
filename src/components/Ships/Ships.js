@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
-import ReactTable from 'react-table';
-import withFixedColumns from 'react-table-hoc-fixed-columns';
+import ShipsList from './ShipsList/ShipsList';
+import Filters from './Filters/Filters';
 import { db } from '../../firebase';
 import prepareShipsData from './shipUtils';
-import 'react-table/react-table.css';
+import { shipColumns, unlockColumns, totalColumns } from './columnConfigs';
 import './Ships.css';
-
-const ReactTableFixedColumns = withFixedColumns(ReactTable);
 
 class Ships extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            filterLevel: {
+                max: 90,
+                min: 72,
+            },
             loadingShips: false,
             ships: [],
+            showUnlock: true,
+            showTotals: true,
         };
     }
 
@@ -27,6 +31,24 @@ class Ships extends Component {
         await response.forEach(doc => ships.push(doc.data()));
 
         return ships;
+    }
+
+    updateFilterLevelRange = (newRange) => {
+        this.setState({
+            filterLevel: newRange,
+        });
+    }
+
+    filterShips(ships) {
+        const filteredShips = ships.filter((ship) => {
+            const { filterLevel } = this.state;
+            const { max, min } = filterLevel;
+            const { level } = ship;
+
+            return level >= min && level <= max;
+        });
+
+        return filteredShips;
     }
 
     updateShips() {
@@ -43,37 +65,33 @@ class Ships extends Component {
     }
 
     render() {
-        const { loadingShips, ships } = this.state;
+        const {
+            filterLevel,
+            loadingShips,
+            ships,
+            showUnlock,
+            showTotals,
+        } = this.state;
+
+        const filteredShips = this.filterShips(ships);
+
+        const columnConfig = [shipColumns];
+        if (showUnlock) { columnConfig.push(unlockColumns); }
+        if (showTotals) { columnConfig.push(totalColumns); }
 
         return (
             <div className="Ships">
-                <h2>Ships</h2>
-                <p>{loadingShips ? 'Loading...' : ''}</p>
-                <ReactTableFixedColumns
-                    data={ships}
-                    className="-striped -highlight"
-                    columns={[
-                        {
-                            Header: 'SHIP',
-                            fixed: 'left',
-                            columns: [
-                                {
-                                    Header: 'Lvl',
-                                    accessor: 'level',
-                                },
-                                {
-                                    Header: 'Name',
-                                    accessor: 'name',
-                                },
-                            ],
-                        },
-                    ]}
-                    defaultSorted={[
-                        {
-                            id: 'level',
-                            desc: false,
-                        },
-                    ]}
+                <h2>
+                    Ships
+                    { loadingShips ? ' ...' : '' }
+                </h2>
+                <Filters
+                    levelRange={filterLevel}
+                    updateLevelRange={this.updateFilterLevelRange}
+                />
+                <ShipsList
+                    data={filteredShips}
+                    columns={columnConfig}
                 />
             </div>
         );

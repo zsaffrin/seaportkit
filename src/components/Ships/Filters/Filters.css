@@ -1,0 +1,8 @@
+
+.Filters {
+    margin-bottom: var(--space4);
+}
+
+.Filters .filter {
+    padding: var(--space3);
+}
