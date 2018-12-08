@@ -39,6 +39,12 @@ class Ships extends Component {
         });
     }
 
+    updateStateKey(key, val) {
+        this.setState({
+            [key]: val,
+        });
+    }
+
     filterShips(ships) {
         const filteredShips = ships.filter((ship) => {
             const { filterLevel } = this.state;
@@ -88,6 +94,9 @@ class Ships extends Component {
                 <Filters
                     levelRange={filterLevel}
                     updateLevelRange={this.updateFilterLevelRange}
+                    showUnlock={showUnlock}
+                    showTotals={showTotals}
+                    updateShowFilter={this.updateStateKey}
                 />
                 <ShipsList
                     data={filteredShips}

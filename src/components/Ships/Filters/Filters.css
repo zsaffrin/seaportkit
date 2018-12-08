@@ -6,3 +6,7 @@
 .Filters .filter {
     padding: var(--space3);
 }
+
+.horiz-check {
+    display: flex;
+}

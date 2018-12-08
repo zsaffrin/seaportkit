@@ -7,6 +7,9 @@ import './Filters.css';
 const Filters = ({
     levelRange,
     updateLevelRange,
+    showUnlock,
+    showTotals,
+    updateShowFilter,
 }) => (
     <div className="Filters">
         <div className="filter">
@@ -19,6 +22,19 @@ const Filters = ({
                     value={levelRange}
                     onChange={val => updateLevelRange(val)}
                 />
+            </div>
+        </div>
+        <div className="filter">
+            <div className="filter-title">Show</div>
+            <div className="filter-content">
+                <label className="horiz-check" htmlFor="showUnlock">
+                    <input type="checkbox" name="showUnlock" id="showUnlock" value={showUnlock} onChange={() => updateShowFilter(!showUnlock)} />
+                    Unlock
+                </label>
+                <label className="horiz-check" htmlFor="showTotals">
+                    <input type="checkbox" name="showTotals" id="showTotals" value={showTotals} onChange={() => updateShowFilter(!showTotals)} />
+                    Totals
+                </label>
             </div>
         </div>
     </div>
