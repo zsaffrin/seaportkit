@@ -76,8 +76,104 @@ const totalColumns = {
     }],
 };
 
+const unlockCrewRatioColumns = {
+    Header: 'UNLOCK CREW-COST RATIOS',
+    columns: [{
+        Header: 'Crew',
+        accessor: 'unlockCrew',
+    }, {
+        Header: 'Coins',
+        accessor: 'unlockCrewCoinRatio',
+    }, {
+        Header: 'Wood',
+        accessor: 'unlockCrewWoodRatio',
+    }, {
+        Header: 'Stone',
+        accessor: 'unlockCrewStoneRatio',
+    }, {
+        Header: 'Iron',
+        accessor: 'unlockCrewIronRatio',
+    }, {
+        Header: 'Gems',
+        accessor: 'unlockCrewGemRatio',
+    }],
+};
+
+const unlockCapacityRatioColumns = {
+    Header: 'UNLOCK CAPACITY-COST RATIOS',
+    columns: [{
+        Header: 'Capacity',
+        accessor: 'unlockCapacity',
+    }, {
+        Header: 'Coins',
+        accessor: 'unlockCapacityCoinRatio',
+    }, {
+        Header: 'Wood',
+        accessor: 'unlockCapacityWoodRatio',
+    }, {
+        Header: 'Stone',
+        accessor: 'unlockCapacityStoneRatio',
+    }, {
+        Header: 'Iron',
+        accessor: 'unlockCapacityIronRatio',
+    }, {
+        Header: 'Gems',
+        accessor: 'unlockCapacityGemRatio',
+    }],
+};
+
+const totalCrewRatioColumns = {
+    Header: 'TOTAL CREW-COST RATIOS',
+    columns: [{
+        Header: 'Crew',
+        accessor: 'totalCrew',
+    }, {
+        Header: 'Coins',
+        accessor: 'totalCrewCoinRatio',
+    }, {
+        Header: 'Wood',
+        accessor: 'totalCrewWoodRatio',
+    }, {
+        Header: 'Stone',
+        accessor: 'totalCrewStoneRatio',
+    }, {
+        Header: 'Iron',
+        accessor: 'totalCrewIronRatio',
+    }, {
+        Header: 'Gems',
+        accessor: 'totalCrewGemRatio',
+    }],
+};
+
+const totalCapacityRatioColumns = {
+    Header: 'TOTAL CAPACITY-COST RATIOS',
+    columns: [{
+        Header: 'Capacity',
+        accessor: 'totalCapacity',
+    }, {
+        Header: 'Coins',
+        accessor: 'totalCapacityCoinRatio',
+    }, {
+        Header: 'Wood',
+        accessor: 'totalCapacityWoodRatio',
+    }, {
+        Header: 'Stone',
+        accessor: 'totalCapacityStoneRatio',
+    }, {
+        Header: 'Iron',
+        accessor: 'totalCapacityIronRatio',
+    }, {
+        Header: 'Gems',
+        accessor: 'totalCapacityGemRatio',
+    }],
+};
+
 export {
     shipColumns,
     unlockColumns,
+    unlockCapacityRatioColumns,
+    unlockCrewRatioColumns,
     totalColumns,
+    totalCrewRatioColumns,
+    totalCapacityRatioColumns,
 };

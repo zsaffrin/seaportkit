@@ -3,24 +3,33 @@ import ShipsList from './ShipsList/ShipsList';
 import Filters from './Filters/Filters';
 import { db } from '../../firebase';
 import prepareShipsData from './shipUtils';
-import { shipColumns, unlockColumns, totalColumns } from './columnConfigs';
+import {
+    shipColumns,
+    unlockColumns,
+    unlockCapacityRatioColumns,
+    unlockCrewRatioColumns,
+    totalColumns,
+    totalCapacityRatioColumns,
+    totalCrewRatioColumns,
+} from './columnConfigs';
 import './Ships.css';
 
 class Ships extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            filterLevel: {
-                max: 100,
-                min: 70,
-            },
-            showColumns: {
-                showUnlock: true,
-                showTotals: true,
-            },
-            ships: [],
-        };
-    }
+    state = {
+        filterLevel: {
+            max: 100,
+            min: 70,
+        },
+        showColumns: {
+            showUnlock: true,
+            showTotals: true,
+            showUnlockCapacityRatios: true,
+            showUnlockCrewRatios: true,
+            showTotalCapacityRatios: true,
+            showTotalCrewRatios: true,
+        },
+        ships: [],
+    };
 
     componentDidMount() {
         db.collection('ships').onSnapshot((response) => {
@@ -75,9 +84,20 @@ class Ships extends Component {
         const filteredShips = this.filterShips(ships);
 
         const columnConfig = [shipColumns];
-        const { showUnlock, showTotals } = showColumns;
+        const {
+            showUnlock,
+            showUnlockCapacityRatios,
+            showUnlockCrewRatios,
+            showTotals,
+            showTotalCapacityRatios,
+            showTotalCrewRatios,
+        } = showColumns;
         if (showUnlock) { columnConfig.push(unlockColumns); }
         if (showTotals) { columnConfig.push(totalColumns); }
+        if (showUnlockCapacityRatios) { columnConfig.push(unlockCapacityRatioColumns); }
+        if (showUnlockCrewRatios) { columnConfig.push(unlockCrewRatioColumns); }
+        if (showTotalCapacityRatios) { columnConfig.push(totalCapacityRatioColumns); }
+        if (showTotalCrewRatios) { columnConfig.push(totalCrewRatioColumns); }
 
         return (
             <div className="Ships">
