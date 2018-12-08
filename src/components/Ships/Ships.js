@@ -11,26 +11,31 @@ class Ships extends Component {
         super(props);
         this.state = {
             filterLevel: {
-                max: 90,
-                min: 72,
+                max: 100,
+                min: 70,
             },
-            loadingShips: false,
+            showColumns: {
+                showUnlock: true,
+                showTotals: true,
+            },
             ships: [],
-            showUnlock: true,
-            showTotals: true,
         };
     }
 
     componentDidMount() {
-        this.updateShips();
-    }
-
-    getShips = async () => {
-        const response = await db.collection('ships').get();
-        const ships = [];
-        await response.forEach(doc => ships.push(doc.data()));
-
-        return ships;
+        db.collection('ships').onSnapshot((response) => {
+            const ships = [];
+            response.forEach((doc) => {
+                const ship = doc.data();
+                ship.id = doc.id;
+                ships.push(ship);
+            });
+            ships.sort((a, b) => (
+                b.levelUnlocked - a.levelUnlocked
+            ));
+            const preparedShips = prepareShipsData(ships);
+            this.setState({ ships: preparedShips });
+        });
     }
 
     updateFilterLevelRange = (newRange) => {
@@ -39,9 +44,12 @@ class Ships extends Component {
         });
     }
 
-    updateStateKey(key, val) {
+    toggleShowColumns = (key) => {
+        const { showColumns } = this.state;
+        const newState = { ...showColumns };
+        newState[key] = !newState[key];
         this.setState({
-            [key]: val,
+            showColumns: newState,
         });
     }
 
@@ -57,46 +65,28 @@ class Ships extends Component {
         return filteredShips;
     }
 
-    updateShips() {
-        this.setState({
-            loadingShips: true,
-        });
-        this.getShips().then((ships) => {
-            const preparedShipsData = prepareShipsData(ships);
-            this.setState({
-                loadingShips: false,
-                ships: preparedShipsData,
-            });
-        });
-    }
-
     render() {
         const {
             filterLevel,
-            loadingShips,
             ships,
-            showUnlock,
-            showTotals,
+            showColumns,
         } = this.state;
 
         const filteredShips = this.filterShips(ships);
 
         const columnConfig = [shipColumns];
+        const { showUnlock, showTotals } = showColumns;
         if (showUnlock) { columnConfig.push(unlockColumns); }
         if (showTotals) { columnConfig.push(totalColumns); }
 
         return (
             <div className="Ships">
-                <h2>
-                    Ships
-                    { loadingShips ? ' ...' : '' }
-                </h2>
+                <h2>Ships</h2>
                 <Filters
                     levelRange={filterLevel}
                     updateLevelRange={this.updateFilterLevelRange}
-                    showUnlock={showUnlock}
-                    showTotals={showTotals}
-                    updateShowFilter={this.updateStateKey}
+                    showFilter={showColumns}
+                    updateShowFilter={this.toggleShowColumns}
                 />
                 <ShipsList
                     data={filteredShips}
