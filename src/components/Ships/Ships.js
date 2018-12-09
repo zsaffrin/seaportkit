@@ -59,9 +59,6 @@ class Ships extends Component {
             }
         });
 
-        console.info(`Max: ${max}`);
-        console.info(`Min: ${min}`);
-
         return {
             max,
             min,
