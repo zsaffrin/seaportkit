@@ -1,4 +1,3 @@
-import React from 'react';
 
 const shipColumns = {
     Header: 'SHIP',
@@ -7,14 +6,16 @@ const shipColumns = {
         Header: 'Lvl',
         accessor: 'level',
         width: 40,
+        className: 'centered',
     }, {
         Header: 'Name',
         accessor: 'name',
-        Cell: row => (
-            <span style={{ fontWeight: 'bolder' }}>
-                {row.value}
-            </span>
-        ),
+        className: 'bolded',
+    }, {
+        Header: '⚓️',
+        accessor: 'slots',
+        width: 30,
+        className: 'centered',
     }],
 };
 
