@@ -84,7 +84,8 @@ class Filters extends Component {
 
         return (
             <div className="Filters">
-                <div className="filter">
+                <div className="column">
+                    <div className="filter">
                     <div className="filter-title">Show</div>
                     <div className="filter-content">
                         <label className="horiz-check" htmlFor="showUnlock">
@@ -155,16 +156,19 @@ class Filters extends Component {
                         </label>
                     </div>
                 </div>
-                <div className="filter">
-                    <div className="filter-title">Unlock Level</div>
-                    <div className="filter-content range-slider">
-                        <InputRange
-                            draggableTrack
-                            maxValue={levelRangeSliderLimits.max}
-                            minValue={levelRangeSliderLimits.min}
-                            value={levelRange}
-                            onChange={this.handleUnlockRangeUpdate}
-                        />
+                </div>
+                <div className="column">
+                    <div className="filter">
+                        <div className="filter-title">Unlock Level</div>
+                        <div className="filter-content range-slider">
+                            <InputRange
+                                draggableTrack
+                                maxValue={levelRangeSliderLimits.max}
+                                minValue={levelRangeSliderLimits.min}
+                                value={levelRange}
+                                onChange={this.handleUnlockRangeUpdate}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
