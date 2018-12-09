@@ -86,76 +86,76 @@ class Filters extends Component {
             <div className="Filters">
                 <div className="column">
                     <div className="filter">
-                    <div className="filter-title">Show</div>
-                    <div className="filter-content">
-                        <label className="horiz-check" htmlFor="showUnlock">
-                            <input
-                                type="checkbox"
-                                name="showUnlock"
-                                id="showUnlock"
-                                value={showUnlock}
-                                checked={showUnlock}
-                                onChange={this.handleCheckboxChange}
-                            />
-                            Unlock
-                        </label>
-                        <label className="horiz-check" htmlFor="showTotals">
-                            <input
-                                type="checkbox"
-                                name="showTotals"
-                                id="showTotals"
-                                value={showTotals}
-                                checked={showTotals}
-                                onChange={this.handleCheckboxChange}
-                            />
-                            Totals
-                        </label>
-                        <label className="horiz-check" htmlFor="showUnlockCapacityRatios">
-                            <input
-                                type="checkbox"
-                                name="showUnlockCapacityRatios"
-                                id="showUnlockCapacityRatios"
-                                value={showUnlockCapacityRatios}
-                                checked={showUnlockCapacityRatios}
-                                onChange={this.handleCheckboxChange}
-                            />
-                            Unlock Capacity-Cost Ratios
-                        </label>
-                        <label className="horiz-check" htmlFor="showUnlockCrewRatios">
-                            <input
-                                type="checkbox"
-                                name="showUnlockCrewRatios"
-                                id="showUnlockCrewRatios"
-                                value={showUnlockCrewRatios}
-                                checked={showUnlockCrewRatios}
-                                onChange={this.handleCheckboxChange}
-                            />
-                            Unlock Crew-Cost Ratios
-                        </label>
-                        <label className="horiz-check" htmlFor="showTotalCapacityRatios">
-                            <input
-                                type="checkbox"
-                                name="showTotalCapacityRatios"
-                                id="showTotalCapacityRatios"
-                                value={showTotalCapacityRatios}
-                                checked={showTotalCapacityRatios}
-                                onChange={this.handleCheckboxChange}
-                            />
-                            Total Capacity-Cost Ratios
-                        </label>
-                        <label className="horiz-check" htmlFor="showTotalCrewRatios">
-                            <input
-                                type="checkbox"
-                                name="showTotalCrewRatios"
-                                id="showTotalCrewRatios"
-                                value={showTotalCrewRatios}
-                                checked={showTotalCrewRatios}
-                                onChange={this.handleCheckboxChange}
-                            />
-                            Total Crew-Cost Ratios
-                        </label>
+                        <div className="filter-title">Show</div>
+                        <div className="filter-content">
+                            <label className="horiz-check" htmlFor="showUnlock">
+                                <input
+                                    type="checkbox"
+                                    name="showUnlock"
+                                    id="showUnlock"
+                                    value={showUnlock}
+                                    checked={showUnlock}
+                                    onChange={this.handleCheckboxChange}
+                                />
+                                Unlock
+                            </label>
+                            <label className="horiz-check" htmlFor="showTotals">
+                                <input
+                                    type="checkbox"
+                                    name="showTotals"
+                                    id="showTotals"
+                                    value={showTotals}
+                                    checked={showTotals}
+                                    onChange={this.handleCheckboxChange}
+                                />
+                                Totals
+                            </label>
+                            <label className="horiz-check" htmlFor="showUnlockCapacityRatios">
+                                <input
+                                    type="checkbox"
+                                    name="showUnlockCapacityRatios"
+                                    id="showUnlockCapacityRatios"
+                                    value={showUnlockCapacityRatios}
+                                    checked={showUnlockCapacityRatios}
+                                    onChange={this.handleCheckboxChange}
+                                />
+                                Unlock Capacity-Cost Ratios
+                            </label>
+                            <label className="horiz-check" htmlFor="showUnlockCrewRatios">
+                                <input
+                                    type="checkbox"
+                                    name="showUnlockCrewRatios"
+                                    id="showUnlockCrewRatios"
+                                    value={showUnlockCrewRatios}
+                                    checked={showUnlockCrewRatios}
+                                    onChange={this.handleCheckboxChange}
+                                />
+                                Unlock Crew-Cost Ratios
+                            </label>
+                            <label className="horiz-check" htmlFor="showTotalCapacityRatios">
+                                <input
+                                    type="checkbox"
+                                    name="showTotalCapacityRatios"
+                                    id="showTotalCapacityRatios"
+                                    value={showTotalCapacityRatios}
+                                    checked={showTotalCapacityRatios}
+                                    onChange={this.handleCheckboxChange}
+                                />
+                                Total Capacity-Cost Ratios
+                            </label>
+                            <label className="horiz-check" htmlFor="showTotalCrewRatios">
+                                <input
+                                    type="checkbox"
+                                    name="showTotalCrewRatios"
+                                    id="showTotalCrewRatios"
+                                    value={showTotalCrewRatios}
+                                    checked={showTotalCrewRatios}
+                                    onChange={this.handleCheckboxChange}
+                                />
+                                Total Crew-Cost Ratios
+                            </label>
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div className="column">
                     <div className="filter">
