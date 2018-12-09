@@ -2,6 +2,7 @@
 .Filters {
     display: grid;
     grid-template-columns: auto 1fr;
+    grid-gap: var(--space3);
 }
 
 .Filters .filter {
