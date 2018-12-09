@@ -6,6 +6,14 @@
     --space4: 16px;
     --space5: 24px;
     --space6: 32px;
+
+    /* Colors                      */
+    /* Generated with PALX         */
+    /* https://palx.jxnblk.com/07c */
+    --white: #f8f9f9;
+    --blue: #07c;
+    --darkblue: #004d84;
+    --black: #111;
 }
 
 body {

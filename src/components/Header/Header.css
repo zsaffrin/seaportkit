@@ -8,3 +8,19 @@ header {
 header .primary {
     flex: 1 1 auto;
 }
+
+header .github-link {
+    background: var(--darkblue);
+    border-radius: .3em;
+    color: var(--white);
+    font-size: .8rem;
+    font-weight: bolder;
+    margin: var(--space2);
+    padding: 2px var(--space1);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+header .github-link:hover {
+    background: var(--blue);
+}

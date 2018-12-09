@@ -8,10 +8,12 @@ const Header = () => (
         </div>
         <div className="secondary">
             <a
-                href="https://github.com/zsaffrin/seaportkit"
+                className="github-link"
+                href="https://github.com/zsaffrin/seaportkit/issues"
                 rel="noopener noreferrer"
+                target="_blank"
             >
-                GitHub
+                Report issues and suggest enhancements
             </a>
         </div>
     </header>
