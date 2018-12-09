@@ -77,6 +77,11 @@ class Filters extends Component {
             showTotalCrewRatios,
         } = showFilter;
 
+        const levelRangeSliderLimits = {
+            max: levelRangeLimits.max ? levelRangeLimits.max : 350,
+            min: levelRangeLimits.min ? levelRangeLimits.min : 0,
+        };
+
         return (
             <div className="Filters">
                 <div className="filter">
@@ -84,8 +89,8 @@ class Filters extends Component {
                     <div className="filter-content">
                         <InputRange
                             draggableTrack
-                            maxValue={levelRangeLimits.max}
-                            minValue={levelRangeLimits.min}
+                            maxValue={levelRangeSliderLimits.max}
+                            minValue={levelRangeSliderLimits.min}
                             value={levelRange}
                             onChange={this.handleUnlockRangeUpdate}
                         />

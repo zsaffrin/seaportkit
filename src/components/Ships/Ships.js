@@ -18,7 +18,7 @@ class Ships extends Component {
     state = {
         filterLevel: {
             max: 100,
-            min: 70,
+            min: 71,
         },
         showColumns: {
             showUnlock: true,
@@ -59,7 +59,13 @@ class Ships extends Component {
             }
         });
 
-        return { max, min };
+        console.info(`Max: ${max}`);
+        console.info(`Min: ${min}`);
+
+        return {
+            max,
+            min,
+        };
     }
 
     updateFilterLevelRange = (newRange) => {
