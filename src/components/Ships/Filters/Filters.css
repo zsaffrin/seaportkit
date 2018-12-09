@@ -1,6 +1,7 @@
 
 .Filters {
-    margin-bottom: var(--space4);
+    display: grid;
+    grid-template-columns: auto 1fr;
 }
 
 .Filters .filter {
@@ -9,4 +10,8 @@
 
 .horiz-check {
     display: flex;
+}
+
+.range-slider {
+    padding: var(--space4) var(--space2);
 }
