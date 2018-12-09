@@ -20,11 +20,13 @@ const prepareShipsData = (rawShipsData) => {
     const preparedShipsData = rawShipsData.map(({
         levelUnlocked,
         name,
+        slots,
         unlock,
         totals,
     }) => ({
         level: levelUnlocked,
-        name,
+        name: name || '',
+        slots: slots || null,
         unlockXp: unlock ? formatNumberIfPresent(unlock.xp) : '-',
         unlockCrew: unlock ? unlock.crew : '-',
         unlockCapacity: unlock ? unlock.capacity : '-',
