@@ -3,6 +3,7 @@ import { shape, arrayOf } from 'prop-types';
 import ReactTable from 'react-table';
 import withFixedColumns from 'react-table-hoc-fixed-columns';
 import 'react-table/react-table.css';
+import './ShipsList.css';
 
 const ReactTableFixedColumns = withFixedColumns(ReactTable);
 
