@@ -47,6 +47,21 @@ class Ships extends Component {
         });
     }
 
+    determineRangeMinMax = (data, key) => {
+        let max;
+        let min;
+        data.forEach((i) => {
+            if (!max || i[key] > max) {
+                max = i[key];
+            }
+            if (!min || i[key] < min) {
+                min = i[key];
+            }
+        });
+
+        return { max, min };
+    }
+
     updateFilterLevelRange = (newRange) => {
         this.setState({
             filterLevel: newRange,
@@ -83,6 +98,8 @@ class Ships extends Component {
 
         const filteredShips = this.filterShips(ships);
 
+        const levelRangeLimits = this.determineRangeMinMax(ships, 'level');
+
         const columnConfig = [shipColumns];
         const {
             showUnlock,
@@ -104,6 +121,7 @@ class Ships extends Component {
                 <h2>Ships</h2>
                 <Filters
                     levelRange={filterLevel}
+                    levelRangeLimits={levelRangeLimits}
                     updateLevelRange={this.updateFilterLevelRange}
                     showFilter={showColumns}
                     updateShowFilter={this.toggleShowColumns}
