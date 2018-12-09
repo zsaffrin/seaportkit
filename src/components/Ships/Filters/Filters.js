@@ -10,8 +10,12 @@ import 'react-input-range/lib/css/index.css';
 import './Filters.css';
 
 class Filters extends Component {
-    propTypes = {
+    static propTypes = {
         levelRange: shape({
+            max: number,
+            min: number,
+        }),
+        levelRangeLimits: shape({
             max: number,
             min: number,
         }),
@@ -27,8 +31,12 @@ class Filters extends Component {
         updateShowFilter: func,
     };
 
-    defaultProps = {
+    static defaultProps = {
         levelRange: {
+            max: 350,
+            min: 0,
+        },
+        levelRangeLimits: {
             max: 350,
             min: 0,
         },
@@ -57,6 +65,7 @@ class Filters extends Component {
     render() {
         const {
             levelRange,
+            levelRangeLimits,
             showFilter,
         } = this.props;
         const {
@@ -75,8 +84,8 @@ class Filters extends Component {
                     <div className="filter-content">
                         <InputRange
                             draggableTrack
-                            maxValue={350}
-                            minValue={0}
+                            maxValue={levelRangeLimits.max}
+                            minValue={levelRangeLimits.min}
                             value={levelRange}
                             onChange={this.handleUnlockRangeUpdate}
                         />
