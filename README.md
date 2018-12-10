@@ -1,5 +1,7 @@
 # SeaportKit
 
+[![GitHub version](https://badge.fury.io/gh/zsaffrin%2Fseaportkit.svg)](https://github.com/zsaffrin/seaportkit)
+
 Source code for app running at [seaportkit.info](http://seaportkit.info)
 
 SeaportKit is a companion planning app for [Seaport](https://portal.pixelfederation.com/en/seaport/) game by [Pixel Federation](https://portal.pixelfederation.com/en/)
