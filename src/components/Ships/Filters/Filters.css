@@ -5,7 +5,12 @@
     grid-gap: var(--space3);
 }
 
+.Filters .row {
+    display: flex;
+}
+
 .Filters .filter {
+    flex: 1 1 auto;
     padding: var(--space3);
 }
 
@@ -14,5 +19,5 @@
 }
 
 .range-slider {
-    padding: var(--space4) var(--space2);
+    padding: var(--space4) var(--space2) var(--space3);
 }

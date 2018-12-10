@@ -19,6 +19,14 @@ class Filters extends Component {
             max: number,
             min: number,
         }),
+        unlockCrewRangeLimits: shape({
+            max: number,
+            min: number,
+        }),
+        unlockCapacityRangeLimits: shape({
+            max: number,
+            min: number,
+        }),
         showFilter: shape({
             showTotals: bool,
             showUnlock: bool,
@@ -40,6 +48,22 @@ class Filters extends Component {
             max: 350,
             min: 0,
         },
+        unlockCrewRangeLimits: {
+            max: 250,
+            min: 0,
+        },
+        unlockCapacityRangeLimits: {
+            max: 1058,
+            min: 0,
+        },
+        totalCrewRangeLimits: {
+            max: 250,
+            min: 0,
+        },
+        totalCapacityRangeLimits: {
+            max: 1058,
+            min: 0,
+        },
         showFilter: shape({
             showTotals: false,
             showUnlock: false,
@@ -57,15 +81,23 @@ class Filters extends Component {
         updateShowFilter(e.target.name);
     };
 
-    handleUnlockRangeUpdate = (val) => {
-        const { updateLevelRange } = this.props;
-        updateLevelRange(val);
-    }
-
     render() {
         const {
             levelRange,
             levelRangeLimits,
+            unlockCrewRange,
+            unlockCrewRangeLimits,
+            unlockCapacityRange,
+            unlockCapacityRangeLimits,
+            totalCrewRange,
+            totalCrewRangeLimits,
+            totalCapacityRange,
+            totalCapacityRangeLimits,
+            updateLevelRange,
+            updateUnlockCrewRange,
+            updateUnlockCapacityRange,
+            updateTotalCrewRange,
+            updateTotalCapacityRange,
             showFilter,
         } = this.props;
         const {
@@ -76,11 +108,6 @@ class Filters extends Component {
             showTotalCapacityRatios,
             showTotalCrewRatios,
         } = showFilter;
-
-        const levelRangeSliderLimits = {
-            max: levelRangeLimits.max ? levelRangeLimits.max : 350,
-            min: levelRangeLimits.min ? levelRangeLimits.min : 0,
-        };
 
         return (
             <div className="Filters">
@@ -158,16 +185,70 @@ class Filters extends Component {
                     </div>
                 </div>
                 <div className="column">
-                    <div className="filter">
-                        <div className="filter-title">Unlock Level</div>
-                        <div className="filter-content range-slider">
-                            <InputRange
-                                draggableTrack
-                                maxValue={levelRangeSliderLimits.max}
-                                minValue={levelRangeSliderLimits.min}
-                                value={levelRange}
-                                onChange={this.handleUnlockRangeUpdate}
-                            />
+                    <div className="row">
+                        <div className="filter">
+                            <div className="filter-title">Level</div>
+                            <div className="filter-content range-slider">
+                                <InputRange
+                                    draggableTrack
+                                    maxValue={levelRangeLimits.max}
+                                    minValue={levelRangeLimits.min}
+                                    value={levelRange}
+                                    onChange={val => updateLevelRange(val)}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="filter">
+                            <div className="filter-title">Unlock Crew</div>
+                            <div className="filter-content range-slider">
+                                <InputRange
+                                    draggableTrack
+                                    maxValue={unlockCrewRangeLimits.max}
+                                    minValue={unlockCrewRangeLimits.min}
+                                    value={unlockCrewRange}
+                                    onChange={val => updateUnlockCrewRange(val)}
+                                />
+                            </div>
+                        </div>
+                        <div className="filter">
+                            <div className="filter-title">Unlock Capacity</div>
+                            <div className="filter-content range-slider">
+                                <InputRange
+                                    draggableTrack
+                                    maxValue={unlockCapacityRangeLimits.max}
+                                    minValue={unlockCapacityRangeLimits.min}
+                                    value={unlockCapacityRange}
+                                    onChange={val => updateUnlockCapacityRange(val)}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="filter">
+                            <div className="filter-title">Total Crew</div>
+                            <div className="filter-content range-slider">
+                                <InputRange
+                                    draggableTrack
+                                    maxValue={totalCrewRangeLimits.max}
+                                    minValue={totalCrewRangeLimits.min}
+                                    value={totalCrewRange}
+                                    onChange={val => updateTotalCrewRange(val)}
+                                />
+                            </div>
+                        </div>
+                        <div className="filter">
+                            <div className="filter-title">Total Capacity</div>
+                            <div className="filter-content range-slider">
+                                <InputRange
+                                    draggableTrack
+                                    maxValue={totalCapacityRangeLimits.max}
+                                    minValue={totalCapacityRangeLimits.min}
+                                    value={totalCapacityRange}
+                                    onChange={val => updateTotalCapacityRange(val)}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

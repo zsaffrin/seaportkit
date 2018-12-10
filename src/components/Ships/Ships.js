@@ -20,6 +20,22 @@ class Ships extends Component {
             max: 100,
             min: 71,
         },
+        filterUnlockCrew: {
+            max: 250,
+            min: 0,
+        },
+        filterUnlockCapacity: {
+            max: 1058,
+            min: 0,
+        },
+        filterTotalCrew: {
+            max: 250,
+            min: 0,
+        },
+        filterTotalCapacity: {
+            max: 1058,
+            min: 0,
+        },
         showColumns: {
             showUnlock: true,
             showTotals: true,
@@ -51,11 +67,12 @@ class Ships extends Component {
         let max;
         let min;
         data.forEach((i) => {
-            if (!max || i[key] > max) {
-                max = i[key];
+            const target = i[key];
+            if (!max || target > max) {
+                max = target;
             }
-            if (!min || i[key] < min) {
-                min = i[key];
+            if (!min || target < min) {
+                min = target;
             }
         });
 
@@ -71,6 +88,30 @@ class Ships extends Component {
         });
     }
 
+    updateFilterUnlockCrewRange = (newRange) => {
+        this.setState({
+            filterUnlockCrew: newRange,
+        });
+    }
+
+    updateFilterUnlockCapacityRange = (newRange) => {
+        this.setState({
+            filterUnlockCapacity: newRange,
+        });
+    }
+
+    updateFilterTotalCrewRange = (newRange) => {
+        this.setState({
+            filterTotalCrew: newRange,
+        });
+    }
+
+    updateFilterTotalCapacityRange = (newRange) => {
+        this.setState({
+            filterTotalCapacity: newRange,
+        });
+    }
+
     toggleShowColumns = (key) => {
         const { showColumns } = this.state;
         const newState = { ...showColumns };
@@ -82,11 +123,34 @@ class Ships extends Component {
 
     filterShips(ships) {
         const filteredShips = ships.filter((ship) => {
-            const { filterLevel } = this.state;
-            const { max, min } = filterLevel;
-            const { level } = ship;
+            const {
+                filterLevel,
+                filterUnlockCrew,
+                filterUnlockCapacity,
+                filterTotalCrew,
+                filterTotalCapacity,
+            } = this.state;
 
-            return level >= min && level <= max;
+            const {
+                level,
+                unlockCrew,
+                unlockCapacity,
+                totalCrew,
+                totalCapacity,
+            } = ship;
+
+            return (
+                level >= filterLevel.min
+                && level <= filterLevel.max
+                && unlockCrew >= filterUnlockCrew.min
+                && unlockCrew <= filterUnlockCrew.max
+                && unlockCapacity >= filterUnlockCapacity.min
+                && unlockCapacity <= filterUnlockCapacity.max
+                && totalCrew >= filterTotalCrew.min
+                && totalCrew <= filterTotalCrew.max
+                && totalCapacity >= filterTotalCapacity.min
+                && totalCapacity <= filterTotalCapacity.max
+            );
         });
 
         return filteredShips;
@@ -95,6 +159,10 @@ class Ships extends Component {
     render() {
         const {
             filterLevel,
+            filterUnlockCrew,
+            filterUnlockCapacity,
+            filterTotalCrew,
+            filterTotalCapacity,
             ships,
             showColumns,
         } = this.state;
@@ -102,6 +170,10 @@ class Ships extends Component {
         const filteredShips = this.filterShips(ships);
 
         const levelRangeLimits = this.determineRangeMinMax(ships, 'level');
+        const unlockCrewRangeLimits = this.determineRangeMinMax(ships, 'unlockCrew');
+        const unlockCapacityRangeLimits = this.determineRangeMinMax(ships, 'unlockCapacity');
+        const totalCrewRangeLimits = this.determineRangeMinMax(ships, 'totalCrew');
+        const totalCapacityRangeLimits = this.determineRangeMinMax(ships, 'totalCapacity');
 
         const columnConfig = [shipColumns];
         const {
@@ -125,7 +197,19 @@ class Ships extends Component {
                 <Filters
                     levelRange={filterLevel}
                     levelRangeLimits={levelRangeLimits}
+                    unlockCrewRange={filterUnlockCrew}
+                    unlockCrewRangeLimits={unlockCrewRangeLimits}
+                    unlockCapacityRange={filterUnlockCapacity}
+                    unlockCapacityRangeLimits={unlockCapacityRangeLimits}
+                    totalCrewRange={filterTotalCrew}
+                    totalCrewRangeLimits={totalCrewRangeLimits}
+                    totalCapacityRange={filterTotalCapacity}
+                    totalCapacityRangeLimits={totalCapacityRangeLimits}
                     updateLevelRange={this.updateFilterLevelRange}
+                    updateUnlockCrewRange={this.updateFilterUnlockCrewRange}
+                    updateUnlockCapacityRange={this.updateFilterUnlockCapacityRange}
+                    updateTotalCrewRange={this.updateFilterTotalCrewRange}
+                    updateTotalCapacityRange={this.updateFilterTotalCapacityRange}
                     showFilter={showColumns}
                     updateShowFilter={this.toggleShowColumns}
                 />
