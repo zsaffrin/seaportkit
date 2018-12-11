@@ -19,11 +19,35 @@ class Filters extends Component {
             max: number,
             min: number,
         }),
+        unlockCrewRange: shape({
+            max: number,
+            min: number,
+        }),
         unlockCrewRangeLimits: shape({
             max: number,
             min: number,
         }),
+        unlockCapacityRange: shape({
+            max: number,
+            min: number,
+        }),
         unlockCapacityRangeLimits: shape({
+            max: number,
+            min: number,
+        }),
+        totalCrewRange: shape({
+            max: number,
+            min: number,
+        }),
+        totalCrewRangeLimits: shape({
+            max: number,
+            min: number,
+        }),
+        totalCapacityRange: shape({
+            max: number,
+            min: number,
+        }),
+        totalCapacityRangeLimits: shape({
             max: number,
             min: number,
         }),
@@ -36,6 +60,10 @@ class Filters extends Component {
             showTotalCrewRatios: bool,
         }),
         updateLevelRange: func,
+        updateUnlockCrewRange: func,
+        updateUnlockCapacityRange: func,
+        updateTotalCrewRange: func,
+        updateTotalCapacityRange: func,
         updateShowFilter: func,
     };
 
@@ -48,16 +76,32 @@ class Filters extends Component {
             max: 350,
             min: 0,
         },
+        unlockCrewRange: {
+            max: 250,
+            min: 0,
+        },
         unlockCrewRangeLimits: {
             max: 250,
+            min: 0,
+        },
+        unlockCapacityRange: {
+            max: 1058,
             min: 0,
         },
         unlockCapacityRangeLimits: {
             max: 1058,
             min: 0,
         },
+        totalCrewRange: {
+            max: 250,
+            min: 0,
+        },
         totalCrewRangeLimits: {
             max: 250,
+            min: 0,
+        },
+        totalCapacityRange: {
+            max: 1058,
             min: 0,
         },
         totalCapacityRangeLimits: {
@@ -73,6 +117,10 @@ class Filters extends Component {
             showTotalCrewRatios: false,
         }),
         updateLevelRange: () => { },
+        updateUnlockCrewRange: () => { },
+        updateUnlockCapacityRange: () => { },
+        updateTotalCrewRange: () => { },
+        updateTotalCapacityRange: () => { },
         updateShowFilter: () => { },
     };
 
