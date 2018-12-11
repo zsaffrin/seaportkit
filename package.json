@@ -1,6 +1,6 @@
 {
     "name": "seaportkit",
-    "version": "0.2.0",
+    "version": "0.1.0",
     "description": "Companion planning app for Seaport game by Pixel Federation",
     "author": "Zach Saffrin <zach@zachsaffrin.com> (http://zachsaffrin.com)",
     "dependencies": {
